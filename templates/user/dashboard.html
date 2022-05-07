@@ -1,0 +1,44 @@
+{% extends "user/layout.html"%}
+
+{% block content %}
+<div class="container">
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category,message in messages %}
+    <div class="alert alert-{{category}}">
+        <strong>{{message}}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% include 'user/navbar.html' %}
+    <div class="container">
+        <div class="my-2">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Edu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{users.id}}</td>
+                            <td>{{users.fname}}</td>
+                            <td>{{users.lname}}</td>
+                            <td>{{users.username}}</td>
+                            <td>{{users.email}}</td>
+                            <td>{{users.edu}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

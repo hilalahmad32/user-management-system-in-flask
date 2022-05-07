@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>{{title}} - User Management System </title>
+    {% else %}
+    <title>User Management System </title>
+    {% endif %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container my-2">
+        <div class="d-flex justify-content-center align-items-center">
+            <img style="width: 5%;"
+                src="data:image/png;base64,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"
+                alt="">
+            <h3>
+                User Management System
+            </h3>
+        </div>
+        <div class="text-center my-2">
+            {% if session.get('user_id') %}
+            <button class="btn btn-info">{{session.username}}</button>
+            {% endif %}
+        </div>
+        <hr>
+    </div>
+    {% block content %} {% endblock content %}
+</body>
+
+</html>

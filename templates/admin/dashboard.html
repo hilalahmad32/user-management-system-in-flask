@@ -1,0 +1,9 @@
+{% extends 'admin/layout.html' %}
+{% block content %}
+<div class="container">
+    {% include 'admin/navbar.html' %}
+</div>
+{% if session.admin_name %}
+{{session.admin_name}}
+{% endif %}
+{% endblock content %}
