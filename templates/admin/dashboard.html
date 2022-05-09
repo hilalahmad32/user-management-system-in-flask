@@ -3,7 +3,26 @@
 <div class="container">
     {% include 'admin/navbar.html' %}
 </div>
-{% if session.admin_name %}
-{{session.admin_name}}
-{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-xl-6 my-2 col-lg-6 col-sm-12">
+            <div class="bg-success d-flex p-3 justify-content-between align-items-center">
+                <h2>Total User</h2>
+                <h4>{{totalUser}}</h4>
+            </div>
+        </div>
+        <div class="col-xl-6 my-2 col-lg-6 col-sm-12">
+            <div class="bg-warning d-flex p-3 justify-content-between align-items-center">
+                <h2>Approved User</h2>
+                <h4>{{totalApprove}}</h4>
+            </div>
+        </div>
+        <div class="col-xl-6 my-2 col-lg-6 col-sm-12">
+            <div class="bg-primary d-flex p-3 justify-content-between align-items-center">
+                <h2>DisApprove User</h2>
+                <h4>{{NotTotalApprove}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

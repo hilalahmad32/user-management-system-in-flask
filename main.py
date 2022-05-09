@@ -77,21 +77,27 @@ def adminIndex():
         return render_template('admin/index.html',title="Admin Login")
 
 # admin Dashboard
-# net is not connect so sorry
 @app.route('/admin/dashboard')
 def adminDashboard():
     if not session.get('admin_id'):
         return redirect('/admin/')
-    return render_template('admin/dashboard.html',title="Admin Dashboard")
+    totalUser=User.query.count()
+    totalApprove=User.query.filter_by(status=1).count()
+    NotTotalApprove=User.query.filter_by(status=0).count()
+    return render_template('admin/dashboard.html',title="Admin Dashboard",totalUser=totalUser,totalApprove=totalApprove,NotTotalApprove=NotTotalApprove)
 
 # admin get all user 
 @app.route('/admin/get-all-user', methods=["POST","GET"])
 def adminGetAllUser():
     if not session.get('admin_id'):
         return redirect('/admin/')
-
-    users=User.query.all()
-    return render_template('admin/all-user.html',title='Approve User',users=users)
+    if request.method== "POST":
+        search=request.form.get('search')
+        users=User.query.filter(User.username.like('%'+search+'%')).all()
+        return render_template('admin/all-user.html',title='Approve User',users=users)
+    else:
+        users=User.query.all()
+        return render_template('admin/all-user.html',title='Approve User',users=users)
 
 @app.route('/admin/approve-user/<int:id>')
 def adminApprove(id):
